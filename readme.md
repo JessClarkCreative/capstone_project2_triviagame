@@ -1,5 +1,8 @@
 # Trivia Master
 
+Deployment on
+https://trivia-frontend-1ods.onrender.com/
+
 ### Local Setup
 
 1. Clone the repository:
