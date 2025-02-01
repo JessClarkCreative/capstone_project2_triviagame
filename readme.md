@@ -1,17 +1,6 @@
 # Trivia Master
 
-## Quick Start (For Grading)
-
-### Option 1: Play Live Version
-Visit: [https://your-deployed-url.com](https://your-deployed-url.com)
-
-Test Account:
-- Email: test@example.com
-- Password: test123
-
-Or create your own account to play!
-
-### Option 2: Local Setup
+### Local Setup
 
 1. Clone the repository:
 ```bash
