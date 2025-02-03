@@ -1,9 +1,54 @@
 # Trivia Master
 
-Deployment on
-https://trivia-frontend-1ods.onrender.com/
+A full-stack trivia game application that tests your knowledge across multiple categories.
 
-### Local Setup
+🎮 [Play Now](https://trivia-frontend-1ods.onrender.com/)
+
+## Project Details
+
+This interactive trivia game features:
+- 3 rounds of trivia (5 questions each)
+- Real-time score tracking
+- Global leaderboard
+- Personal score history
+- User authentication
+
+### Database Schema
+
+```mermaid
+erDiagram
+    User ||--o{ Score : has
+    User {
+        int id PK
+        string email "unique"
+        string username "unique"
+        string password "hashed"
+        datetime createdAt
+        datetime updatedAt
+    }
+    Score {
+        int id PK
+        int score
+        int userId FK
+        datetime createdAt
+        datetime updatedAt
+    }
+```
+
+The database design features:
+- Users can have multiple scores (one-to-many relationship)
+- Email and username uniqueness enforcement
+- Secure password hashing with bcrypt
+- Automatic timestamp tracking for all records
+
+## Tech Stack
+
+- **Frontend**: React with Semantic UI
+- **Backend**: Node.js/Express
+- **Database**: PostgreSQL with Prisma ORM
+- **Authentication**: JWT
+
+## Local Setup
 
 1. Clone the repository:
 ```bash
@@ -36,22 +81,6 @@ npm run dev
 
 4. Visit `http://localhost:5173` in your browser
 
-## Project Details
-
-This full-stack trivia game features:
-- 3 rounds of trivia (5 questions each)
-- Score tracking
-- Global leaderboard
-- Personal score history
-- User authentication
-
-## Tech Stack
-
-- Frontend: React with Semantic UI
-- Backend: Node.js/Express
-- Database: PostgreSQL with Prisma ORM
-- Authentication: JWT
-
 ## Project Structure
 ```
 ├── frontend/          # React application
@@ -65,20 +94,19 @@ This full-stack trivia game features:
 │   └── README.md      # Backend setup details
 ```
 
-## Grading Notes
+## Key Components
 
-### Key Files to Review
-- `frontend/src/components/TriviaGame.jsx`: Core game logic
-- `frontend/src/components/Leaderboard.jsx`: Score display
-- `backend/routes/`: API endpoints
-- `backend/prisma/schema.prisma`: Database schema
+### Frontend
+- `TriviaGame.jsx`: Core game logic and user interface
+- `Leaderboard.jsx`: Displays global rankings and personal scores
+- `App.jsx`: Main application layout and routing
+- `Login.jsx`/`Signup.jsx`: User authentication forms
 
-### Features to Test
-1. User Registration/Login
-2. Complete game flow (3 rounds)
-3. Score saving
-4. Leaderboard updates
-5. Personal score history
+### Backend
+- `authRoutes.js`: Authentication endpoints
+- `scoreRoutes.js`: Score tracking and retrieval
+- `leaderboardRoutes.js`: Global rankings
+- `schema.prisma`: Database schema definition
 
 ## Testing
 
@@ -88,18 +116,26 @@ cd frontend
 npm test
 ```
 
-## Common Issues & Solutions
+## Troubleshooting
 
-1. Database Connection:
-   - Ensure PostgreSQL is running
-   - Check DATABASE_URL in .env
-   - Run `npx prisma migrate reset` if needed
+### Database Connection Issues
+- Verify PostgreSQL is running
+- Check DATABASE_URL in .env file
+- Try `npx prisma migrate reset` if schema is out of sync
 
-2. Port Conflicts:
-   - Backend runs on port 5000
-   - Frontend runs on port 5173
-   - Change in .env if needed
+### Port Conflicts
+- Backend default: port 5000
+- Frontend default: port 5173
+- Configure ports in respective .env files if needed
 
-## Need Help?
+## Features to Test
+1. User Registration/Login
+2. Complete game flow (3 rounds)
+3. Score saving
+4. Leaderboard updates
+5. Personal score history
 
+## Contact
+
+Need help or want to report an issue? 
 Contact: [jessclarkcreative@gmail.com]
